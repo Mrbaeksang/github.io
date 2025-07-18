@@ -215,30 +215,14 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">구현 과정</h2>
-                <p class="section-subtitle">4명이 백엔드를 분담하여 클래스별로 구현한 과정</p>
+                <p class="section-subtitle">4명이 백엔드를 분담하여 구현한 내용</p>
             </div>
             <div class="implementation-grid">
                 <div class="implementation-card" data-aos="fade-up" data-aos-delay="100">
-                    <h3>🛍️ Product 클래스</h3>
-                    <h4>담당: 임정민</h4>
-                    <div class="implementation-details">
-                        <h5>주요 메서드</h5>
-                        <ul>
-                            <li>createProduct() - 상품 등록</li>
-                            <li>getProducts() - 상품 목록 조회</li>
-                            <li>getProductById() - 상품 상세 조회</li>
-                            <li>updateProduct() - 상품 정보 수정</li>
-                            <li>deleteProduct() - 상품 삭제</li>
-                        </ul>
-                        <h5>테이블: products</h5>
-                        <p>id, name, category_id, price, description, image_url, created_at, updated_at</p>
-                    </div>
-                </div>
-                <div class="implementation-card" data-aos="fade-up" data-aos-delay="200">
-                    <h3>👤 User 클래스</h3>
+                    <h3>🔐 User & Auth 구현</h3>
                     <h4>담당: 이찬수</h4>
                     <div class="implementation-details">
-                        <h5>주요 메서드</h5>
+                        <h5>User 클래스 메서드</h5>
                         <ul>
                             <li>register() - 회원가입</li>
                             <li>login() - 로그인 및 JWT 발급</li>
@@ -246,15 +230,45 @@
                             <li>updateUser() - 회원정보 수정</li>
                             <li>deleteUser() - 회원 탈퇴</li>
                         </ul>
+                        <h5>JWT 인증 시스템</h5>
+                        <ul>
+                            <li>JWT 토큰 생성 및 검증</li>
+                            <li>Spring Security 설정</li>
+                            <li>인증 필터 구현</li>
+                        </ul>
                         <h5>테이블: users</h5>
                         <p>id, email, password, name, phone, address, role, created_at</p>
                     </div>
                 </div>
+                <div class="implementation-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>🛍️ Product & Category 구현</h3>
+                    <h4>담당: 임정민</h4>
+                    <div class="implementation-details">
+                        <h5>Product 클래스 메서드</h5>
+                        <ul>
+                            <li>createProduct() - 상품 등록</li>
+                            <li>getProducts() - 상품 목록 조회</li>
+                            <li>getProductById() - 상품 상세 조회</li>
+                            <li>updateProduct() - 상품 정보 수정</li>
+                            <li>deleteProduct() - 상품 삭제</li>
+                        </ul>
+                        <h5>Category 클래스 메서드</h5>
+                        <ul>
+                            <li>createCategory() - 카테고리 생성</li>
+                            <li>getCategories() - 카테고리 목록</li>
+                            <li>updateCategory() - 카테고리 수정</li>
+                            <li>deleteCategory() - 카테고리 삭제</li>
+                        </ul>
+                        <h5>테이블</h5>
+                        <p><strong>products:</strong> id, name, category_id, price, description, image_url, created_at, updated_at</p>
+                        <p><strong>categories:</strong> id, name, description</p>
+                    </div>
+                </div>
                 <div class="implementation-card" data-aos="fade-up" data-aos-delay="300">
-                    <h3>📦 Order 클래스</h3>
+                    <h3>📦 Order & OrderItem 구현</h3>
                     <h4>담당: 천영우</h4>
                     <div class="implementation-details">
-                        <h5>주요 메서드</h5>
+                        <h5>Order 클래스 메서드</h5>
                         <ul>
                             <li>createOrder() - 주문 생성</li>
                             <li>getOrders() - 주문 목록 조회</li>
@@ -262,30 +276,23 @@
                             <li>updateOrderStatus() - 주문 상태 변경</li>
                             <li>cancelOrder() - 주문 취소</li>
                         </ul>
-                        <h5>테이블: orders</h5>
-                        <p>id, user_id, total_price, status, order_date, delivery_address</p>
-                    </div>
-                </div>
-                <div class="implementation-card" data-aos="fade-up" data-aos-delay="400">
-                    <h3>📋 OrderItem 클래스</h3>
-                    <h4>담당: 천영우</h4>
-                    <div class="implementation-details">
-                        <h5>주요 메서드</h5>
+                        <h5>OrderItem 클래스 메서드</h5>
                         <ul>
                             <li>addOrderItem() - 주문 아이템 추가</li>
                             <li>getOrderItems() - 주문 아이템 조회</li>
                             <li>updateQuantity() - 수량 변경</li>
                             <li>calculateSubtotal() - 소계 계산</li>
                         </ul>
-                        <h5>테이블: order_items</h5>
-                        <p>id, order_id, product_id, quantity, price</p>
+                        <h5>테이블</h5>
+                        <p><strong>orders:</strong> id, user_id, total_price, status, order_date, delivery_address</p>
+                        <p><strong>order_items:</strong> id, order_id, product_id, quantity, price</p>
                     </div>
                 </div>
-                <div class="implementation-card" data-aos="fade-up" data-aos-delay="500">
-                    <h3>💖 Wishlist 클래스</h3>
+                <div class="implementation-card" data-aos="fade-up" data-aos-delay="400">
+                    <h3>💖 Wishlist & Frontend 구현</h3>
                     <h4>담당: 백상현</h4>
                     <div class="implementation-details">
-                        <h5>주요 메서드</h5>
+                        <h5>Wishlist 클래스 메서드</h5>
                         <ul>
                             <li>addToWishlist() - 위시리스트 추가</li>
                             <li>getWishlist() - 위시리스트 조회</li>
@@ -293,23 +300,16 @@
                             <li>removeFromWishlist() - 아이템 삭제</li>
                             <li>clearWishlist() - 전체 삭제</li>
                         </ul>
+                        <h5>Frontend 구현</h5>
+                        <ul>
+                            <li>Next.js 프로젝트 구조 설계</li>
+                            <li>React 컴포넌트 개발</li>
+                            <li>REST API 연동</li>
+                            <li>상태 관리 및 라우팅</li>
+                            <li>반응형 UI/UX 디자인</li>
+                        </ul>
                         <h5>테이블: wishlist</h5>
                         <p>id, user_id, product_id, quantity, added_at</p>
-                    </div>
-                </div>
-                <div class="implementation-card" data-aos="fade-up" data-aos-delay="600">
-                    <h3>📁 Category 클래스</h3>
-                    <h4>담당: 임정민</h4>
-                    <div class="implementation-details">
-                        <h5>주요 메서드</h5>
-                        <ul>
-                            <li>createCategory() - 카테고리 생성</li>
-                            <li>getCategories() - 카테고리 목록</li>
-                            <li>updateCategory() - 카테고리 수정</li>
-                            <li>deleteCategory() - 카테고리 삭제</li>
-                        </ul>
-                        <h5>테이블: categories</h5>
-                        <p>id, name, description</p>
                     </div>
                 </div>
             </div>
