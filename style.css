@@ -8,6 +8,9 @@
     --bg-white: #FFFFFF;
     --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     --shadow-hover: 0 5px 20px rgba(0, 0, 0, 0.15);
+    --shadow-3d: 0 20px 40px rgba(0, 0, 0, 0.2);
+    --gradient-primary: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+    --gradient-accent: linear-gradient(135deg, #FFA500 0%, #FF8C00 100%);
 }
 
 * {
@@ -21,6 +24,119 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     overflow-x: hidden;
+    background: var(--bg-white);
+}
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader {
+    text-align: center;
+}
+
+.coffee-loader {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+}
+
+.coffee-cup-loader {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    position: relative;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.coffee-handle {
+    position: absolute;
+    right: -20px;
+    top: 20px;
+    width: 30px;
+    height: 40px;
+    border: 5px solid var(--primary-color);
+    border-left: none;
+    border-radius: 0 15px 15px 0;
+}
+
+.coffee-steam-loader span {
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to top, var(--primary-color), transparent);
+    left: 50%;
+    top: -40px;
+    animation: steam-loader 2s infinite;
+}
+
+.coffee-steam-loader span:nth-child(2) {
+    left: 40%;
+    animation-delay: 0.5s;
+}
+
+.coffee-steam-loader span:nth-child(3) {
+    left: 60%;
+    animation-delay: 1s;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes steam-loader {
+    0% {
+        transform: translateY(0) scaleY(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-40px) scaleY(1);
+        opacity: 0;
+    }
+}
+
+.loading-text {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Particles Background */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.3;
 }
 
 .container {
@@ -145,6 +261,72 @@ body {
     display: block;
     opacity: 0;
     transform: translateY(30px);
+    position: relative;
+}
+
+/* Glitch Effect */
+.glitch {
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    animation: glitch-1 0.5s infinite;
+    color: #ff00ff;
+    z-index: -1;
+}
+
+.glitch::after {
+    animation: glitch-2 0.5s infinite;
+    color: #00ffff;
+    z-index: -2;
+}
+
+@keyframes glitch-1 {
+    0%, 100% {
+        clip-path: inset(0 0 0 0);
+        transform: translate(0);
+    }
+    20% {
+        clip-path: inset(33% 0 0 0);
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        clip-path: inset(0 0 66% 0);
+        transform: translate(2px, -2px);
+    }
+    60% {
+        clip-path: inset(0 0 0 0);
+        transform: translate(0);
+    }
+}
+
+@keyframes glitch-2 {
+    0%, 100% {
+        clip-path: inset(0 0 0 0);
+        transform: translate(0);
+    }
+    20% {
+        clip-path: inset(0 0 66% 0);
+        transform: translate(2px, 2px);
+    }
+    40% {
+        clip-path: inset(33% 0 0 0);
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        clip-path: inset(0 0 0 0);
+        transform: translate(0);
+    }
 }
 
 .hero-subtitle {
@@ -178,6 +360,9 @@ body {
     border-radius: 50px;
     font-weight: 500;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
 }
 
 .cta-button:hover {
@@ -195,6 +380,9 @@ body {
     border-radius: 50px;
     font-weight: 500;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
 }
 
 .cta-button-outline:hover {
@@ -207,6 +395,70 @@ body {
     position: relative;
     width: 300px;
     height: 300px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+/* 3D Tilt Effect */
+.tilt-3d {
+    transition: transform 0.5s ease;
+}
+
+/* Floating Animation */
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(-50%, -50%) translateY(0px);
+    }
+    50% {
+        transform: translate(-50%, -50%) translateY(-20px);
+    }
+}
+
+/* Coffee Bubbles */
+.coffee-bubble {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    bottom: 20px;
+    animation: bubble 4s infinite;
+}
+
+.coffee-bubble:nth-child(5) {
+    left: 40%;
+    animation-delay: 0s;
+    width: 8px;
+    height: 8px;
+}
+
+.coffee-bubble:nth-child(6) {
+    left: 50%;
+    animation-delay: 1.5s;
+    width: 12px;
+    height: 12px;
+}
+
+.coffee-bubble:nth-child(7) {
+    left: 60%;
+    animation-delay: 3s;
+    width: 6px;
+    height: 6px;
+}
+
+@keyframes bubble {
+    0% {
+        bottom: 20px;
+        opacity: 1;
+    }
+    100% {
+        bottom: 100px;
+        opacity: 0;
+    }
 }
 
 .coffee-cup {
@@ -219,6 +471,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 0 20px 40px rgba(139, 69, 19, 0.3);
+    overflow: hidden;
 }
 
 .coffee-cup::before {
@@ -357,24 +610,66 @@ section {
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
-.team-member {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: var(--shadow);
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(30px);
+/* 3D Flip Card */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 400px;
+    perspective: 1000px;
+    cursor: pointer;
 }
 
-.team-member:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-hover);
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: var(--shadow-3d);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.flip-card-front {
+    background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
+    color: var(--text-dark);
+}
+
+.flip-card-back {
+    background: var(--gradient-primary);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.flip-hint {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    opacity: 0.7;
 }
 
 .member-icon {
@@ -388,10 +683,38 @@ section {
     margin-bottom: 1rem;
 }
 
-.member-desc {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    line-height: 1.6;
+/* Skill Bars */
+.skill-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    margin: 8px 0;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    background: var(--gradient-accent);
+    width: var(--progress);
+    border-radius: 4px;
+    font-size: 0.7rem;
+    color: transparent;
+    transition: width 1s ease;
+    position: relative;
+}
+
+.flip-card:hover .skill-progress {
+    animation: skill-fill 1s ease forwards;
+}
+
+@keyframes skill-fill {
+    from {
+        width: 0;
+    }
+    to {
+        width: var(--progress);
+    }
 }
 
 /* Project Section */
@@ -804,5 +1127,91 @@ section {
     to {
         opacity: 1;
         transform: scale(1);
+    }
+}
+
+/* Tech Item Visible Animation */
+.tech-item {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tech-item.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Enhanced Button Styles */
+.cta-button, .cta-button-outline {
+    transform-style: preserve-3d;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta-button:active, .cta-button-outline:active {
+    transform: scale(0.95);
+}
+
+/* Gradient Text Effect */
+.gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Hover Card Effect */
+.hover-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.shimmer {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* Neon Glow Effect */
+.neon-glow {
+    text-shadow: 
+        0 0 10px var(--accent-color),
+        0 0 20px var(--accent-color),
+        0 0 30px var(--accent-color),
+        0 0 40px var(--accent-color);
+}
+
+/* Responsive Improvements */
+@media (max-width: 768px) {
+    .flip-card {
+        height: 350px;
+    }
+    
+    .glitch::before,
+    .glitch::after {
+        display: none;
+    }
+    
+    #particles-js {
+        display: none;
     }
 }

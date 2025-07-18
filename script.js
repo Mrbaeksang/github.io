@@ -1,8 +1,109 @@
 // GSAP 등록
 gsap.registerPlugin(ScrollTrigger);
 
-// 페이지 로드 시 애니메이션
+// Loading Screen
 window.addEventListener('load', () => {
+    setTimeout(() => {
+        const loadingScreen = document.querySelector('.loading-screen');
+        loadingScreen.classList.add('hidden');
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+        }, 500);
+        initAnimations();
+    }, 2000);
+});
+
+// Initialize all animations
+function initAnimations() {
+    // Initialize AOS
+    AOS.init({
+        duration: 1000,
+        once: false,
+        offset: 100
+    });
+
+    // Initialize Particles.js
+    particlesJS('particles-js', {
+        particles: {
+            number: {
+                value: 80,
+                density: {
+                    enable: true,
+                    value_area: 800
+                }
+            },
+            color: {
+                value: '#8B4513'
+            },
+            shape: {
+                type: 'circle'
+            },
+            opacity: {
+                value: 0.3,
+                random: true
+            },
+            size: {
+                value: 3,
+                random: true
+            },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: '#8B4513',
+                opacity: 0.2,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 2,
+                direction: 'none',
+                random: false,
+                straight: false,
+                out_mode: 'out',
+                bounce: false
+            }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: {
+                onhover: {
+                    enable: true,
+                    mode: 'grab'
+                },
+                onclick: {
+                    enable: true,
+                    mode: 'push'
+                },
+                resize: true
+            },
+            modes: {
+                grab: {
+                    distance: 140,
+                    line_linked: {
+                        opacity: 0.5
+                    }
+                },
+                push: {
+                    particles_nb: 4
+                }
+            }
+        },
+        retina_detect: true
+    });
+
+    // Typed.js for hero subtitle
+    new Typed('.typed-text', {
+        strings: [
+            '우리가 만든 첫 번째 프로젝트',
+            '1주일의 도전과 성장',
+            '커피와 코드의 만남'
+        ],
+        typeSpeed: 50,
+        backSpeed: 30,
+        backDelay: 2000,
+        loop: true
+    });
+
     // Hero 애니메이션
     gsap.timeline()
         .to('.title-line', {
@@ -36,7 +137,7 @@ window.addEventListener('load', () => {
             duration: 1,
             ease: 'back.out(1.7)'
         }, '-=1');
-});
+}
 
 // 스크롤 기반 애니메이션
 // Section 타이틀 애니메이션
@@ -368,3 +469,132 @@ function animateValue(element, start, end, duration) {
     
     requestAnimationFrame(update);
 }
+
+// 3D Card Flip Effect
+document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+    });
+});
+
+// Enhanced 3D Tilt Effect for Coffee Cup
+const coffeeAnimation = document.querySelector('.coffee-animation');
+const heroSection = document.querySelector('.hero');
+
+heroSection.addEventListener('mousemove', (e) => {
+    const rect = heroSection.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateX = (y - centerY) / 20;
+    const rotateY = (centerX - x) / 20;
+    
+    gsap.to(coffeeAnimation, {
+        rotationX: rotateX,
+        rotationY: rotateY,
+        duration: 0.5,
+        ease: 'power2.out'
+    });
+});
+
+heroSection.addEventListener('mouseleave', () => {
+    gsap.to(coffeeAnimation, {
+        rotationX: 0,
+        rotationY: 0,
+        duration: 0.5,
+        ease: 'power2.out'
+    });
+});
+
+// Parallax Effect Enhancement
+gsap.utils.toArray('.info-card').forEach((card, index) => {
+    gsap.fromTo(card, 
+        {
+            y: 100 * (index + 1),
+            opacity: 0
+        },
+        {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 85%',
+                end: 'bottom 15%',
+                scrub: 1
+            }
+        }
+    );
+});
+
+// Glitch Effect Control
+document.querySelectorAll('.glitch').forEach(element => {
+    element.addEventListener('mouseenter', () => {
+        element.style.animation = 'none';
+        setTimeout(() => {
+            element.style.animation = '';
+        }, 100);
+    });
+});
+
+// Advanced Scroll Animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.1
+});
+
+document.querySelectorAll('.tech-item').forEach(item => {
+    observer.observe(item);
+});
+
+// Magnetic Button Effect
+document.querySelectorAll('.cta-button, .cta-button-outline').forEach(button => {
+    button.addEventListener('mousemove', (e) => {
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        gsap.to(button, {
+            x: x * 0.3,
+            y: y * 0.3,
+            duration: 0.3,
+            ease: 'power2.out'
+        });
+    });
+    
+    button.addEventListener('mouseleave', () => {
+        gsap.to(button, {
+            x: 0,
+            y: 0,
+            duration: 0.3,
+            ease: 'power2.out'
+        });
+    });
+});
+
+// Initialize animations after DOM load
+document.addEventListener('DOMContentLoaded', () => {
+    // Smooth reveal animations
+    gsap.from('.nav-logo', {
+        y: -50,
+        opacity: 0,
+        duration: 1,
+        delay: 2.5
+    });
+    
+    gsap.from('.nav-links li', {
+        y: -50,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        delay: 2.7
+    });
+});

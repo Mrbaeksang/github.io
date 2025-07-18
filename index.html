@@ -8,8 +8,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Typed.js -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loader">
+            <div class="coffee-loader">
+                <div class="coffee-cup-loader"></div>
+                <div class="coffee-handle"></div>
+                <div class="coffee-steam-loader">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <p class="loading-text">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
     <!-- Progress Bar -->
     <div class="progress-bar">
         <div class="progress-fill"></div>
@@ -36,24 +62,33 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1 class="hero-title">
-                    <span class="title-line">GRIDS &</span>
-                    <span class="title-line">CIRCLES</span>
+                    <span class="title-line glitch" data-text="GRIDS &">GRIDS &</span>
+                    <span class="title-line glitch" data-text="CIRCLES">CIRCLES</span>
                 </h1>
-                <p class="hero-subtitle">우리가 만든 첫 번째 프로젝트</p>
+                <p class="hero-subtitle"><span class="typed-text"></span></p>
                 <p class="hero-description">데브코스 6기 8회차 1팀의 1주일 도전기</p>
                 <div class="hero-cta">
-                    <a href="#team" class="cta-button">프로젝트 둘러보기</a>
-                    <a href="https://nbe-6-8-1-team01.vercel.app" target="_blank" class="cta-button-outline">사이트 바로가기</a>
+                    <a href="#team" class="cta-button group relative overflow-hidden">
+                        <span class="relative z-10">프로젝트 둘러보기</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+                    </a>
+                    <a href="https://nbe-6-8-1-team01.vercel.app" target="_blank" class="cta-button-outline group">
+                        <span class="relative z-10">사이트 바로가기</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </a>
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="coffee-animation">
-                    <div class="coffee-cup">
+                <div class="coffee-animation tilt-3d">
+                    <div class="coffee-cup floating">
                         <div class="coffee-steam">
                             <span></span>
                             <span></span>
                             <span></span>
                         </div>
+                        <div class="coffee-bubble"></div>
+                        <div class="coffee-bubble"></div>
+                        <div class="coffee-bubble"></div>
                     </div>
                 </div>
             </div>
@@ -72,29 +107,93 @@
                 <p class="section-subtitle">각자의 역할을 완벽히 수행한 팀원들</p>
             </div>
             <div class="team-grid">
-                <div class="team-member" data-member="1">
-                    <div class="member-icon">🎨</div>
-                    <h3>백상현</h3>
-                    <p class="member-role">Frontend Developer</p>
-                    <p class="member-desc">프론트엔드 전체 개발<br>REST API 연동<br>Wishlist 기능 구현</p>
+                <div class="team-member flip-card" data-member="1" data-aos="flip-left" data-aos-delay="100">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="member-icon text-6xl mb-4">🎨</div>
+                            <h3 class="text-2xl font-bold">백상현</h3>
+                            <p class="member-role text-orange-600">Frontend Developer</p>
+                            <div class="flip-hint">Click to flip</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="text-xl font-bold mb-4">백상현</h3>
+                            <p class="text-sm">프론트엔드 전체 개발<br>REST API 연동<br>Wishlist 기능 구현</p>
+                            <div class="mt-4">
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="--progress: 90%">Next.js</div>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="--progress: 85%">TypeScript</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="team-member" data-member="2">
-                    <div class="member-icon">🔐</div>
-                    <h3>이찬수</h3>
-                    <p class="member-role">Auth & Security</p>
-                    <p class="member-desc">JWT 인증 시스템<br>사용자 CRUD<br>서버 환경 구축</p>
+                <div class="team-member flip-card" data-member="2" data-aos="flip-left" data-aos-delay="200">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="member-icon text-6xl mb-4">🔐</div>
+                            <h3 class="text-2xl font-bold">이찬수</h3>
+                            <p class="member-role text-orange-600">Auth & Security</p>
+                            <div class="flip-hint">Click to flip</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="text-xl font-bold mb-4">이찬수</h3>
+                            <p class="text-sm">JWT 인증 시스템<br>사용자 CRUD<br>서버 환경 구축</p>
+                            <div class="mt-4">
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="--progress: 88%">Spring Security</div>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="--progress: 82%">JWT</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="team-member" data-member="3">
-                    <div class="member-icon">📦</div>
-                    <h3>천영우</h3>
-                    <p class="member-role">Order System</p>
-                    <p class="member-desc">주문 관리 시스템<br>Swagger API 문서화<br>테스트 코드 작성</p>
+                <div class="team-member flip-card" data-member="3" data-aos="flip-left" data-aos-delay="300">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="member-icon text-6xl mb-4">📦</div>
+                            <h3 class="text-2xl font-bold">천영우</h3>
+                            <p class="member-role text-orange-600">Order System</p>
+                            <div class="flip-hint">Click to flip</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="text-xl font-bold mb-4">천영우</h3>
+                            <p class="text-sm">주문 관리 시스템<br>Swagger API 문서화<br>테스트 코드 작성</p>
+                            <div class="mt-4">
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="--progress: 85%">Spring Boot</div>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="--progress: 80%">Swagger</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="team-member" data-member="4">
-                    <div class="member-icon">🛍️</div>
-                    <h3>임정민</h3>
-                    <p class="member-role">Product Management</p>
-                    <p class="member-desc">상품 관리 시스템<br>백엔드 리팩토링<br>DB 연결 및 JPA</p>
+                <div class="team-member flip-card" data-member="4" data-aos="flip-left" data-aos-delay="400">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="member-icon text-6xl mb-4">🛍️</div>
+                            <h3 class="text-2xl font-bold">임정민</h3>
+                            <p class="member-role text-orange-600">Product Management</p>
+                            <div class="flip-hint">Click to flip</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="text-xl font-bold mb-4">임정민</h3>
+                            <p class="text-sm">상품 관리 시스템<br>백엔드 리팩토링<br>DB 연결 및 JPA</p>
+                            <div class="mt-4">
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="--progress: 87%">JPA</div>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="--progress: 83%">PostgreSQL</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
