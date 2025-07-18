@@ -9,10 +9,10 @@ window.addEventListener('load', () => {
             loadingScreen.classList.add('hidden');
             setTimeout(() => {
                 loadingScreen.style.display = 'none';
-            }, 500);
+            }, 300);
         }
         initAnimations();
-    }, 2000);
+    }, 800); // 0.8초로 단축
 });
 
 // Initialize all animations
@@ -464,10 +464,22 @@ function animateValue(element, start, end, duration) {
     requestAnimationFrame(update);
 }
 
-// 3D Card Flip Effect
-document.querySelectorAll('.flip-card').forEach(card => {
-    card.addEventListener('click', () => {
-        card.classList.toggle('flipped');
+// Team card hover effect
+document.querySelectorAll('.team-member').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+            scale: 1.05,
+            duration: 0.3,
+            ease: 'power2.out'
+        });
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+            scale: 1,
+            duration: 0.3,
+            ease: 'power2.out'
+        });
     });
 });
 

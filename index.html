@@ -60,33 +60,24 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1 class="hero-title">
-                    <span class="title-line glitch" data-text="GRIDS &">GRIDS &</span>
-                    <span class="title-line glitch" data-text="CIRCLES">CIRCLES</span>
+                    <span class="title-line">GRIDS &</span>
+                    <span class="title-line">CIRCLES</span>
                 </h1>
                 <p class="hero-subtitle"><span class="typed-text"></span></p>
                 <p class="hero-description">데브코스 6기 8회차 1팀의 1주일 도전기</p>
                 <div class="hero-cta">
-                    <a href="#team" class="cta-button group relative overflow-hidden">
-                        <span class="relative z-10">프로젝트 둘러보기</span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
-                    </a>
-                    <a href="https://nbe-6-8-1-team01.vercel.app" target="_blank" class="cta-button-outline group">
-                        <span class="relative z-10">사이트 바로가기</span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    </a>
+                    <a href="#team" class="cta-button">프로젝트 둘러보기</a>
+                    <a href="https://nbe-6-8-1-team01.vercel.app" target="_blank" class="cta-button-outline">사이트 바로가기</a>
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="coffee-animation tilt-3d">
-                    <div class="coffee-cup floating">
+                <div class="coffee-animation">
+                    <div class="coffee-cup">
                         <div class="coffee-steam">
                             <span></span>
                             <span></span>
                             <span></span>
                         </div>
-                        <div class="coffee-bubble"></div>
-                        <div class="coffee-bubble"></div>
-                        <div class="coffee-bubble"></div>
                     </div>
                 </div>
             </div>
@@ -105,93 +96,29 @@
                 <p class="section-subtitle">각자의 역할을 완벽히 수행한 팀원들</p>
             </div>
             <div class="team-grid">
-                <div class="team-member flip-card" data-member="1" data-aos="flip-left" data-aos-delay="100">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <div class="member-icon text-6xl mb-4">🎨</div>
-                            <h3 class="text-2xl font-bold">백상현</h3>
-                            <p class="member-role text-orange-600">Fullstack Developer</p>
-                            <div class="flip-hint">Click to flip</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3 class="text-xl font-bold mb-4">백상현</h3>
-                            <p class="text-sm">프론트엔드 전체 개발<br>REST API 연동<br>Wishlist 클래스 구현<br>DB 설계</p>
-                            <div class="mt-4">
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="--progress: 90%">Next.js</div>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="--progress: 85%">TypeScript</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member-icon">🎨</div>
+                    <h3>백상현</h3>
+                    <p class="member-role">Fullstack Developer</p>
+                    <p class="member-desc">프론트엔드 전체 개발<br>REST API 연동<br>Wishlist 클래스 구현<br>DB 설계</p>
                 </div>
-                <div class="team-member flip-card" data-member="2" data-aos="flip-left" data-aos-delay="200">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <div class="member-icon text-6xl mb-4">🔐</div>
-                            <h3 class="text-2xl font-bold">이찬수</h3>
-                            <p class="member-role text-orange-600">Auth & Security</p>
-                            <div class="flip-hint">Click to flip</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3 class="text-xl font-bold mb-4">이찬수</h3>
-                            <p class="text-sm">JWT 인증 시스템<br>User 클래스 구현<br>서버 환경 구축<br>DB 설계 및 보안</p>
-                            <div class="mt-4">
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="--progress: 88%">Spring Security</div>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="--progress: 82%">JWT</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="member-icon">🔐</div>
+                    <h3>이찬수</h3>
+                    <p class="member-role">Auth & Security</p>
+                    <p class="member-desc">JWT 인증 시스템<br>User 클래스 구현<br>서버 환경 구축<br>DB 설계 및 보안</p>
                 </div>
-                <div class="team-member flip-card" data-member="3" data-aos="flip-left" data-aos-delay="300">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <div class="member-icon text-6xl mb-4">📦</div>
-                            <h3 class="text-2xl font-bold">천영우</h3>
-                            <p class="member-role text-orange-600">Order System</p>
-                            <div class="flip-hint">Click to flip</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3 class="text-xl font-bold mb-4">천영우</h3>
-                            <p class="text-sm">Order 클래스 구현<br>Swagger API 문서화<br>테스트 코드 작성<br>DB 설계</p>
-                            <div class="mt-4">
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="--progress: 85%">Spring Boot</div>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="--progress: 80%">Swagger</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+                    <div class="member-icon">📦</div>
+                    <h3>천영우</h3>
+                    <p class="member-role">Order System</p>
+                    <p class="member-desc">Order 클래스 구현<br>Swagger API 문서화<br>테스트 코드 작성<br>DB 설계</p>
                 </div>
-                <div class="team-member flip-card" data-member="4" data-aos="flip-left" data-aos-delay="400">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <div class="member-icon text-6xl mb-4">🛍️</div>
-                            <h3 class="text-2xl font-bold">임정민</h3>
-                            <p class="member-role text-orange-600">Product Management</p>
-                            <div class="flip-hint">Click to flip</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3 class="text-xl font-bold mb-4">임정민</h3>
-                            <p class="text-sm">Product 클래스 구현<br>백엔드 코드 리팩토링<br>DB 연결 및 JPA 설정</p>
-                            <div class="mt-4">
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="--progress: 87%">JPA</div>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="--progress: 83%">PostgreSQL</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="400">
+                    <div class="member-icon">🛍️</div>
+                    <h3>임정민</h3>
+                    <p class="member-role">Product Management</p>
+                    <p class="member-desc">Product 클래스 구현<br>백엔드 코드 리팩토링<br>DB 연결 및 JPA 설정</p>
                 </div>
             </div>
         </div>

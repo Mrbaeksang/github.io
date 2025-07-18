@@ -396,69 +396,7 @@ body {
     width: 300px;
     height: 300px;
     transform-style: preserve-3d;
-    perspective: 1000px;
-}
-
-/* 3D Tilt Effect */
-.tilt-3d {
     transition: transform 0.5s ease;
-}
-
-/* Floating Animation */
-.floating {
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translate(-50%, -50%) translateY(0px);
-    }
-    50% {
-        transform: translate(-50%, -50%) translateY(-20px);
-    }
-}
-
-/* Coffee Bubbles */
-.coffee-bubble {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    bottom: 20px;
-    animation: bubble 4s infinite;
-}
-
-.coffee-bubble:nth-child(5) {
-    left: 40%;
-    animation-delay: 0s;
-    width: 8px;
-    height: 8px;
-}
-
-.coffee-bubble:nth-child(6) {
-    left: 50%;
-    animation-delay: 1.5s;
-    width: 12px;
-    height: 12px;
-}
-
-.coffee-bubble:nth-child(7) {
-    left: 60%;
-    animation-delay: 3s;
-    width: 6px;
-    height: 6px;
-}
-
-@keyframes bubble {
-    0% {
-        bottom: 20px;
-        opacity: 1;
-    }
-    100% {
-        bottom: 100px;
-        opacity: 0;
-    }
 }
 
 .coffee-cup {
@@ -471,7 +409,12 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 0 20px 40px rgba(139, 69, 19, 0.3);
-    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.coffee-animation:hover .coffee-cup {
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 25px 50px rgba(139, 69, 19, 0.4);
 }
 
 .coffee-cup::before {
@@ -614,107 +557,62 @@ section {
     gap: 2rem;
 }
 
-/* 3D Flip Card */
-.flip-card {
-    background-color: transparent;
-    width: 100%;
-    height: 400px;
-    perspective: 1000px;
-    cursor: pointer;
-}
-
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner,
-.flip-card.flipped .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border-radius: 15px;
-    box-shadow: var(--shadow-3d);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* Simple 3D Team Card */
+.team-member {
+    background: white;
+    border-radius: 20px;
     padding: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+    position: relative;
 }
 
-.flip-card-front {
-    background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
-    color: var(--text-dark);
-}
-
-.flip-card-back {
-    background: var(--gradient-primary);
-    color: white;
-    transform: rotateY(180deg);
-}
-
-.flip-hint {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    font-size: 0.8rem;
-    color: var(--text-light);
-    opacity: 0.7;
+.team-member:hover {
+    transform: translateY(-10px) rotateX(-5deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .member-icon {
-    font-size: 3rem;
+    font-size: 4rem;
     margin-bottom: 1rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover .member-icon {
+    transform: scale(1.1);
+}
+
+.team-member h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
 }
 
 .member-role {
     color: var(--secondary-color);
     font-weight: 500;
     margin-bottom: 1rem;
+    font-size: 1.1rem;
 }
 
-/* Skill Bars */
-.skill-bar {
-    width: 100%;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
-    margin: 8px 0;
-    overflow: hidden;
+.member-desc {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
+/* Remove flip card styles */
+.flip-card,
+.flip-card-inner,
+.flip-card-front,
+.flip-card-back,
+.flip-hint,
+.skill-bar,
 .skill-progress {
-    height: 100%;
-    background: var(--gradient-accent);
-    width: var(--progress);
-    border-radius: 4px;
-    font-size: 0.7rem;
-    color: transparent;
-    transition: width 1s ease;
-    position: relative;
-}
-
-.flip-card:hover .skill-progress {
-    animation: skill-fill 1s ease forwards;
-}
-
-@keyframes skill-fill {
-    from {
-        width: 0;
-    }
-    to {
-        width: var(--progress);
-    }
+    /* Removed */
 }
 
 /* Project Section */
@@ -732,9 +630,19 @@ section {
 .info-card {
     background: var(--bg-light);
     padding: 2rem;
-    border-radius: 10px;
+    border-radius: 15px;
     opacity: 0;
     transform: translateX(-30px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-card:hover {
+    transform: translateX(0) translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
 .info-card h3 {
