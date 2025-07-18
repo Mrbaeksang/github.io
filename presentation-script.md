@@ -8,7 +8,7 @@
 
 저희는 1주일이라는 짧은 시간 동안 **GRIDS & CIRCLES**라는 커피 이커머스 프로젝트를 완성했습니다.
 
-팀명의 GRIDS는 개발자의 정교함을, CIRCLES는 커피의 부드러움을 상징합니다.
+프로젝트명은 커피숍 인테리어에서 영감을 받았습니다.
 
 ---
 
@@ -108,10 +108,13 @@
 
 ## [6:00 - 7:00] **시행착오와 해결**
 
-### 1. **CORS 에러**
-- 처음엔 CORS가 뭔지도 몰랐습니다
-- Cross-Origin Resource Sharing: 브라우저가 다른 출처의 리소스 접근을 차단
-- Spring Security에 `.allowedOrigins("프론트엔드 주소")` 설정으로 해결
+### 1. **CORS 에러 - 브라우저 보안 정책**
+- **문제**: Postman에서는 되는데 브라우저에서만 안 됨
+- **이유**: 브라우저는 다른 서버(localhost:3000 → 8080) 접근을 차단
+- **해결**: 백엔드에서 프론트엔드 주소를 허용 목록에 추가
+  ```java
+  .allowedOrigins("http://localhost:3000")
+  ```
 
 ### 2. **API 메서드명 불일치**
 - 프론트: getProductsList() vs 백엔드: getProducts()
@@ -122,6 +125,13 @@
 - Supabase prepared statement 에러 → prepareThreshold=0 설정
 - JPA 매핑 오류 → @Column, @JoinColumn 정확히 작성
 - 외래키 제약조건 → 삭제 순서와 CASCADE 옵션 설정
+
+### 4. **Git 협업의 어려움**
+- **문제**: 모두가 main에 직접 push → 충돌 지옥
+- **해결**: 
+  - feature/기능명 브랜치 생성
+  - PR(Pull Request) 리뷰 후 merge
+  - commit 메시지 규칙: feat:, fix:, docs:
 
 ---
 
@@ -146,7 +156,7 @@
 - 테스트 코드 작성
 - 성능 최적화에 도전할 계획입니다
 
-**"첫 프로젝트는 끝이 아닌 시작입니다."**
+이제 더 큰 프로젝트도 자신있게 도전할 수 있습니다.
 
 감사합니다!
 

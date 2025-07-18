@@ -102,8 +102,8 @@ function initAnimations() {
         new Typed('.typed-text', {
         strings: [
             '우리가 만든 첫 번째 프로젝트',
-            '1주일의 도전과 성장',
-            '커피와 코드의 만남'
+            '1주일의 집중 개발',
+            '실제로 작동하는 쇼핑몰'
         ],
         typeSpeed: 50,
         backSpeed: 30,

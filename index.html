@@ -389,17 +389,17 @@
                 <div class="challenge-card">
                     <div class="challenge-header">
                         <span class="challenge-icon">🚫</span>
-                        <h3>CORS(Cross-Origin Resource Sharing) 에러</h3>
+                        <h3>CORS 에러 - 브라우저 보안 정책</h3>
                     </div>
                     <div class="challenge-content">
                         <div class="before-after">
                             <div class="before">
                                 <h4>Before</h4>
-                                <p>Postman에서는 잘 동작하는데<br>브라우저에서만 에러 발생<br><small>CORS가 뭐지도 몰랐던 시기</small></p>
+                                <p>Postman = 테스트 도구 (허용)<br>브라우저 = 사용자 환경 (차단)<br><small>"localhost:3000에서 8080 못부른다고?"</small></p>
                             </div>
                             <div class="after">
                                 <h4>After</h4>
-                                <p>CORS = 다른 출처에서 리소스 접근 차단<br>Spring Security에 CORS 설정 추가<br>.allowedOrigins("프론트 주소")</p>
+                                <p>CORS = 브라우저가 다른 서버 차단<br>해결: 백엔드에서 허가 설정<br><code>.allowedOrigins("http://localhost:3000")</code></p>
                             </div>
                         </div>
                     </div>
@@ -436,6 +436,24 @@
                             <div class="after">
                                 <h4>After</h4>
                                 <p>prepareThreshold=0 설정 추가<br>@Column 어노테이션 정확히 작성<br>DB 제약조건 문서화</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <span class="challenge-icon">🌿</span>
+                        <h3>Git 협업의 어려움</h3>
+                    </div>
+                    <div class="challenge-content">
+                        <div class="before-after">
+                            <div class="before">
+                                <h4>Before</h4>
+                                <p>각자 main에 직접 push<br>충돌 발생 시 당황<br>누가 뭘 했는지 모름</p>
+                            </div>
+                            <div class="after">
+                                <h4>After</h4>
+                                <p>브랜치 전략 도입 (feature/기능명)<br>PR 리뷰 후 merge<br>commit 메시지 규칙 통일</p>
                             </div>
                         </div>
                     </div>
@@ -482,8 +500,8 @@
                     </div>
                 </div>
                 <div class="final-message">
-                    <p>"첫 프로젝트는 끝이 아닌 시작입니다"</p>
-                    <p class="team-name">- 데브코스 6기 8회차 1팀 -</p>
+                    <p>이제 더 큰 프로젝트도 할 수 있습니다</p>
+                    <p class="team-name">데브코스 6기 8회차 1팀</p>
                 </div>
             </div>
         </div>
@@ -492,7 +510,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 GRIDS & CIRCLES. Made with ❤️ by Team 01</p>
+            <p>&copy; 2024 GRIDS & CIRCLES. Team 01</p>
         </div>
     </footer>
 
