@@ -226,11 +226,12 @@
                         <ul>
                             <li>createProduct() - 상품 등록</li>
                             <li>getProducts() - 상품 목록 조회</li>
+                            <li>getProductById() - 상품 상세 조회</li>
                             <li>updateProduct() - 상품 정보 수정</li>
                             <li>deleteProduct() - 상품 삭제</li>
                         </ul>
                         <h5>테이블: products</h5>
-                        <p>id, name, price, description, image_url</p>
+                        <p>id, name, category_id, price, description, image_url, created_at, updated_at</p>
                     </div>
                 </div>
                 <div class="implementation-card" data-aos="fade-up" data-aos-delay="200">
@@ -241,11 +242,12 @@
                         <ul>
                             <li>register() - 회원가입</li>
                             <li>login() - 로그인 및 JWT 발급</li>
+                            <li>getUserInfo() - 회원정보 조회</li>
                             <li>updateUser() - 회원정보 수정</li>
                             <li>deleteUser() - 회원 탈퇴</li>
                         </ul>
                         <h5>테이블: users</h5>
-                        <p>id, email, password, name, role</p>
+                        <p>id, email, password, name, phone, address, role, created_at</p>
                     </div>
                 </div>
                 <div class="implementation-card" data-aos="fade-up" data-aos-delay="300">
@@ -256,14 +258,30 @@
                         <ul>
                             <li>createOrder() - 주문 생성</li>
                             <li>getOrders() - 주문 목록 조회</li>
+                            <li>getOrderById() - 주문 상세 조회</li>
                             <li>updateOrderStatus() - 주문 상태 변경</li>
                             <li>cancelOrder() - 주문 취소</li>
                         </ul>
                         <h5>테이블: orders</h5>
-                        <p>id, user_id, total_price, status, created_at</p>
+                        <p>id, user_id, total_price, status, order_date, delivery_address</p>
                     </div>
                 </div>
                 <div class="implementation-card" data-aos="fade-up" data-aos-delay="400">
+                    <h3>📋 OrderItem 클래스</h3>
+                    <h4>담당: 천영우</h4>
+                    <div class="implementation-details">
+                        <h5>주요 메서드</h5>
+                        <ul>
+                            <li>addOrderItem() - 주문 아이템 추가</li>
+                            <li>getOrderItems() - 주문 아이템 조회</li>
+                            <li>updateQuantity() - 수량 변경</li>
+                            <li>calculateSubtotal() - 소계 계산</li>
+                        </ul>
+                        <h5>테이블: order_items</h5>
+                        <p>id, order_id, product_id, quantity, price</p>
+                    </div>
+                </div>
+                <div class="implementation-card" data-aos="fade-up" data-aos-delay="500">
                     <h3>💖 Wishlist 클래스</h3>
                     <h4>담당: 백상현</h4>
                     <div class="implementation-details">
@@ -271,11 +289,27 @@
                         <ul>
                             <li>addToWishlist() - 위시리스트 추가</li>
                             <li>getWishlist() - 위시리스트 조회</li>
+                            <li>updateQuantity() - 수량 변경</li>
                             <li>removeFromWishlist() - 아이템 삭제</li>
                             <li>clearWishlist() - 전체 삭제</li>
                         </ul>
                         <h5>테이블: wishlist</h5>
-                        <p>id, user_id, product_id, quantity</p>
+                        <p>id, user_id, product_id, quantity, added_at</p>
+                    </div>
+                </div>
+                <div class="implementation-card" data-aos="fade-up" data-aos-delay="600">
+                    <h3>📁 Category 클래스</h3>
+                    <h4>담당: 임정민</h4>
+                    <div class="implementation-details">
+                        <h5>주요 메서드</h5>
+                        <ul>
+                            <li>createCategory() - 카테고리 생성</li>
+                            <li>getCategories() - 카테고리 목록</li>
+                            <li>updateCategory() - 카테고리 수정</li>
+                            <li>deleteCategory() - 카테고리 삭제</li>
+                        </ul>
+                        <h5>테이블: categories</h5>
+                        <p>id, name, description</p>
                     </div>
                 </div>
             </div>
