@@ -5,10 +5,12 @@ gsap.registerPlugin(ScrollTrigger);
 window.addEventListener('load', () => {
     setTimeout(() => {
         const loadingScreen = document.querySelector('.loading-screen');
-        loadingScreen.classList.add('hidden');
-        setTimeout(() => {
-            loadingScreen.style.display = 'none';
-        }, 500);
+        if (loadingScreen) {
+            loadingScreen.classList.add('hidden');
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        }
         initAnimations();
     }, 2000);
 });
@@ -16,14 +18,17 @@ window.addEventListener('load', () => {
 // Initialize all animations
 function initAnimations() {
     // Initialize AOS
-    AOS.init({
-        duration: 1000,
-        once: false,
-        offset: 100
-    });
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 1000,
+            once: false,
+            offset: 100
+        });
+    }
 
     // Initialize Particles.js
-    particlesJS('particles-js', {
+    if (typeof particlesJS !== 'undefined' && document.getElementById('particles-js')) {
+        particlesJS('particles-js', {
         particles: {
             number: {
                 value: 80,
@@ -89,10 +94,12 @@ function initAnimations() {
             }
         },
         retina_detect: true
-    });
+        });
+    }
 
     // Typed.js for hero subtitle
-    new Typed('.typed-text', {
+    if (typeof Typed !== 'undefined' && document.querySelector('.typed-text')) {
+        new Typed('.typed-text', {
         strings: [
             '우리가 만든 첫 번째 프로젝트',
             '1주일의 도전과 성장',
@@ -102,7 +109,8 @@ function initAnimations() {
         backSpeed: 30,
         backDelay: 2000,
         loop: true
-    });
+        });
+    }
 
     // Hero 애니메이션
     gsap.timeline()
@@ -419,21 +427,7 @@ gsap.to('.coffee-cup', {
     ease: 'none'
 });
 
-// 마우스 패럴랙스 효과 (Hero 섹션)
-const heroSection = document.querySelector('.hero');
-const coffeeAnimation = document.querySelector('.coffee-animation');
-
-heroSection.addEventListener('mousemove', (e) => {
-    const x = (e.clientX - window.innerWidth / 2) / 50;
-    const y = (e.clientY - window.innerHeight / 2) / 50;
-    
-    gsap.to(coffeeAnimation, {
-        x: x,
-        y: y,
-        duration: 0.5,
-        ease: 'power2.out'
-    });
-});
+// 마우스 패럴랙스 효과 (Hero 섹션) - 삭제 (중복)
 
 // 타이핑 효과 (선택적)
 function typeWriter(element, text, speed = 50) {
@@ -481,7 +475,8 @@ document.querySelectorAll('.flip-card').forEach(card => {
 const coffeeAnimation = document.querySelector('.coffee-animation');
 const heroSection = document.querySelector('.hero');
 
-heroSection.addEventListener('mousemove', (e) => {
+if (heroSection && coffeeAnimation) {
+    heroSection.addEventListener('mousemove', (e) => {
     const rect = heroSection.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -498,16 +493,17 @@ heroSection.addEventListener('mousemove', (e) => {
         duration: 0.5,
         ease: 'power2.out'
     });
-});
+    });
 
-heroSection.addEventListener('mouseleave', () => {
+    heroSection.addEventListener('mouseleave', () => {
     gsap.to(coffeeAnimation, {
         rotationX: 0,
         rotationY: 0,
         duration: 0.5,
         ease: 'power2.out'
     });
-});
+    });
+}
 
 // Parallax Effect Enhancement
 gsap.utils.toArray('.info-card').forEach((card, index) => {
