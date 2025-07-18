@@ -924,6 +924,108 @@ section {
     border: none;
 }
 
+/* Implementation Section */
+.implementation {
+    background: var(--bg-white);
+    padding: 5rem 0;
+}
+
+.implementation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.implementation-card {
+    background: var(--bg-light);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.implementation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.implementation-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.implementation-card h4 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.implementation-details h5 {
+    color: var(--primary-color);
+    margin: 1rem 0 0.5rem;
+    font-size: 1rem;
+}
+
+.implementation-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.implementation-details li {
+    padding: 0.3rem 0;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+.implementation-details p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.security-section {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--bg-light);
+    border-radius: 15px;
+}
+
+.security-section h3 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.security-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.security-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.security-card h4 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.security-card ol,
+.security-card ul {
+    color: var(--text-dark);
+    padding-left: 1.5rem;
+}
+
+.security-card li {
+    padding: 0.3rem 0;
+    font-size: 0.95rem;
+}
+
 /* Challenges Section */
 .challenges {
     background: var(--bg-light);
