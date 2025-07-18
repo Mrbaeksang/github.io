@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRIDS & CIRCLES - 우리의 첫 번째 프로젝트</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">G&C</a>
+            <ul class="nav-links">
+                <li><a href="#hero" data-section="hero">Home</a></li>
+                <li><a href="#team" data-section="team">Team</a></li>
+                <li><a href="#project" data-section="project">Project</a></li>
+                <li><a href="#tech" data-section="tech">Tech</a></li>
+                <li><a href="#demo" data-section="demo">Demo</a></li>
+                <li><a href="#challenges" data-section="challenges">Challenges</a></li>
+                <li><a href="#learned" data-section="learned">Learned</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line">GRIDS &</span>
+                    <span class="title-line">CIRCLES</span>
+                </h1>
+                <p class="hero-subtitle">우리가 만든 첫 번째 프로젝트</p>
+                <p class="hero-description">데브코스 6기 8회차 1팀의 1주일 도전기</p>
+                <div class="hero-cta">
+                    <a href="#team" class="cta-button">프로젝트 둘러보기</a>
+                    <a href="https://nbe-6-8-1-team01.vercel.app" target="_blank" class="cta-button-outline">사이트 바로가기</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="coffee-animation">
+                    <div class="coffee-cup">
+                        <div class="coffee-steam">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+            <p>Scroll</p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">4명의 개발자, 하나의 목표</h2>
+                <p class="section-subtitle">각자의 역할을 완벽히 수행한 팀원들</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member" data-member="1">
+                    <div class="member-icon">🎨</div>
+                    <h3>백상현</h3>
+                    <p class="member-role">Frontend Developer</p>
+                    <p class="member-desc">프론트엔드 전체 개발<br>REST API 연동<br>Wishlist 기능 구현</p>
+                </div>
+                <div class="team-member" data-member="2">
+                    <div class="member-icon">🔐</div>
+                    <h3>이찬수</h3>
+                    <p class="member-role">Auth & Security</p>
+                    <p class="member-desc">JWT 인증 시스템<br>사용자 CRUD<br>서버 환경 구축</p>
+                </div>
+                <div class="team-member" data-member="3">
+                    <div class="member-icon">📦</div>
+                    <h3>천영우</h3>
+                    <p class="member-role">Order System</p>
+                    <p class="member-desc">주문 관리 시스템<br>Swagger API 문서화<br>테스트 코드 작성</p>
+                </div>
+                <div class="team-member" data-member="4">
+                    <div class="member-icon">🛍️</div>
+                    <h3>임정민</h3>
+                    <p class="member-role">Product Management</p>
+                    <p class="member-desc">상품 관리 시스템<br>백엔드 리팩토링<br>DB 연결 및 JPA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section id="project" class="project">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">실제로 작동하는 커피 쇼핑몰</h2>
+                <p class="section-subtitle">CRUD 요구사항을 넘어선 실제 서비스 구현</p>
+            </div>
+            <div class="project-content">
+                <div class="project-info">
+                    <div class="info-card">
+                        <h3>프로젝트 요구사항</h3>
+                        <ul>
+                            <li>✓ POST로 Create 구현</li>
+                            <li>✓ GET으로 Read 구현</li>
+                            <li>✓ PUT으로 Update 구현</li>
+                            <li>✓ DELETE로 Delete 구현</li>
+                            <li>✓ 데이터베이스 연동</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>우리가 만든 것</h3>
+                        <ul>
+                            <li>🛒 실제 작동하는 쇼핑몰</li>
+                            <li>🔐 JWT 인증 시스템</li>
+                            <li>💳 주문 및 결제 플로우</li>
+                            <li>📱 반응형 디자인</li>
+                            <li>🚀 Vercel 배포 완료</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="https://nbe-6-8-1-team01.vercel.app" target="_blank" class="link-card">
+                        <span class="link-icon">🌐</span>
+                        <span class="link-text">Live Demo</span>
+                    </a>
+                    <a href="https://github.com/prgrms-be-devcourse/NBE6-8-1-Team01" target="_blank" class="link-card">
+                        <span class="link-icon">📂</span>
+                        <span class="link-text">GitHub Repo</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section id="tech" class="tech">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">처음 배운 기술들로 만든 결과물</h2>
+                <p class="section-subtitle">2달간 배운 내용을 1주일 프로젝트에 적용</p>
+            </div>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h3>Frontend</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js">
+                            <span>Next.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript">
+                            <span>TypeScript</span>
+                        </div>
+                        <div class="tech-item">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind">
+                            <span>Tailwind CSS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3>Backend</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring">
+                            <span>Spring Boot</span>
+                        </div>
+                        <div class="tech-item">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
+                            <span>PostgreSQL</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="text-icon">JWT</span>
+                            <span>JWT Auth</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Demo -->
+    <section id="demo" class="demo">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">백문이 불여일견</h2>
+                <p class="section-subtitle">직접 체험해보는 GRIDS & CIRCLES</p>
+            </div>
+            <div class="demo-content">
+                <div class="demo-flow">
+                    <h3>핵심 플로우</h3>
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">회원가입 → 로그인</span>
+                        </div>
+                        <div class="flow-step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">상품 보기 → 장바구니</span>
+                        </div>
+                        <div class="flow-step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">주문하기 → 주문 확인</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="demo-preview">
+                    <div class="browser-mockup">
+                        <div class="browser-header">
+                            <span class="browser-dot"></span>
+                            <span class="browser-dot"></span>
+                            <span class="browser-dot"></span>
+                        </div>
+                        <iframe src="https://nbe-6-8-1-team01.vercel.app" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenges -->
+    <section id="challenges" class="challenges">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">첫 프로젝트의 시행착오</h2>
+                <p class="section-subtitle">문제를 만나고 해결하며 성장했습니다</p>
+            </div>
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <span class="challenge-icon">🚫</span>
+                        <h3>CORS 에러와의 첫 만남</h3>
+                    </div>
+                    <div class="challenge-content">
+                        <div class="before-after">
+                            <div class="before">
+                                <h4>Before</h4>
+                                <p>"왜 Postman에서는 되는데 브라우저에서는 안 되지?"</p>
+                            </div>
+                            <div class="after">
+                                <h4>After</h4>
+                                <p>Spring Security CORS 설정 추가로 해결!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <span class="challenge-icon">🔗</span>
+                        <h3>API 경로 혼란</h3>
+                    </div>
+                    <div class="challenge-content">
+                        <div class="before-after">
+                            <div class="before">
+                                <h4>Before</h4>
+                                <p>프론트: /api/products<br>백엔드: /products</p>
+                            </div>
+                            <div class="after">
+                                <h4>After</h4>
+                                <p>Swagger 문서화로 API 표준화 완성</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <span class="challenge-icon">💾</span>
+                        <h3>DB 연결 에러</h3>
+                    </div>
+                    <div class="challenge-content">
+                        <div class="before-after">
+                            <div class="before">
+                                <h4>Before</h4>
+                                <p>Supabase prepared statement 에러 발생</p>
+                            </div>
+                            <div class="after">
+                                <h4>After</h4>
+                                <p>prepareThreshold=0 설정으로 해결</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Learned -->
+    <section id="learned" class="learned">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">1주일 동안의 성장</h2>
+                <p class="section-subtitle">첫 프로젝트를 통해 배운 것들</p>
+            </div>
+            <div class="learned-content">
+                <div class="growth-cards">
+                    <div class="growth-card">
+                        <h3>🎯 개인 성장</h3>
+                        <ul>
+                            <li>실제 서비스 개발 경험</li>
+                            <li>프론트-백 연동의 이해</li>
+                            <li>문제 해결 능력 향상</li>
+                            <li>새로운 기술 습득</li>
+                        </ul>
+                    </div>
+                    <div class="growth-card">
+                        <h3>🤝 팀 협업</h3>
+                        <ul>
+                            <li>Git 협업 워크플로우</li>
+                            <li>코드 리뷰의 중요성</li>
+                            <li>의사소통 능력 향상</li>
+                            <li>역할 분담의 효율성</li>
+                        </ul>
+                    </div>
+                    <div class="growth-card">
+                        <h3>🚀 다음 목표</h3>
+                        <ul>
+                            <li>더 복잡한 프로젝트 도전</li>
+                            <li>클린 코드 작성</li>
+                            <li>테스트 코드 강화</li>
+                            <li>성능 최적화 학습</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="final-message">
+                    <p>"첫 프로젝트는 끝이 아닌 시작입니다"</p>
+                    <p class="team-name">- 데브코스 6기 8회차 1팀 -</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 GRIDS & CIRCLES. Made with ❤️ by Team 01</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
