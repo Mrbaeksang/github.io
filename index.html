@@ -46,6 +46,7 @@
                 <li><a href="#hero" data-section="hero">Home</a></li>
                 <li><a href="#team" data-section="team">Team</a></li>
                 <li><a href="#project" data-section="project">Project</a></li>
+                <li><a href="#database" data-section="database">Database</a></li>
                 <li><a href="#tech" data-section="tech">Tech</a></li>
                 <li><a href="#implementation" data-section="implementation">구현</a></li>
                 <li><a href="#demo" data-section="demo">Demo</a></li>
@@ -164,6 +165,142 @@
         </div>
     </section>
 
+    <!-- Database Design & ERD -->
+    <section id="database" class="database">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">데이터베이스 설계 & ERD</h2>
+                <p class="section-subtitle">5개 테이블로 구성된 관계형 데이터베이스</p>
+            </div>
+            <div class="erd-content">
+                <div class="erd-diagram">
+                    <div class="erd-tables">
+                        <div class="erd-table" data-aos="fade-up" data-aos-delay="100">
+                            <h3>👤 users</h3>
+                            <div class="table-fields">
+                                <div class="field primary"><strong>🔑 id</strong> (int)</div>
+                                <div class="field">name (varchar)</div>
+                                <div class="field unique">📧 email (varchar, unique)</div>
+                                <div class="field">address (varchar)</div>
+                                <div class="field">password (varchar)</div>
+                                <div class="field">role (enum)</div>
+                                <div class="field">created_at (datetime)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="erd-table" data-aos="fade-up" data-aos-delay="200">
+                            <h3>📦 "order"</h3>
+                            <div class="table-fields">
+                                <div class="field primary"><strong>🔑 order_id</strong> (bigint)</div>
+                                <div class="field">user_id (varchar)</div>
+                                <div class="field foreign">📧 email (varchar) → users.email</div>
+                                <div class="field">product_name (varchar)</div>
+                                <div class="field">order_count (int)</div>
+                                <div class="field">total_price (int)</div>
+                                <div class="field">address (varchar)</div>
+                                <div class="field">order_status (varchar)</div>
+                                <div class="field">delivery_status (boolean)</div>
+                                <div class="field">created_at, modified_at</div>
+                            </div>
+                        </div>
+
+                        <div class="erd-table" data-aos="fade-up" data-aos-delay="300">
+                            <h3>🛍️ products</h3>
+                            <div class="table-fields">
+                                <div class="field primary"><strong>🔑 product_id</strong> (bigint)</div>
+                                <div class="field">product_name (varchar)</div>
+                                <div class="field">price (int)</div>
+                                <div class="field">description (varchar)</div>
+                                <div class="field">order_count (int)</div>
+                                <div class="field">product_image (text)</div>
+                                <div class="field">stock (int)</div>
+                                <div class="field">created_at (datetime)</div>
+                            </div>
+                        </div>
+
+                        <div class="erd-table" data-aos="fade-up" data-aos-delay="400">
+                            <h3>📋 order_item</h3>
+                            <div class="table-fields">
+                                <div class="field primary"><strong>🔑 order_item_id</strong> (bigint)</div>
+                                <div class="field foreign">order_id → "order".order_id</div>
+                                <div class="field foreign">product_id → products.product_id</div>
+                                <div class="field">order_count (int)</div>
+                                <div class="field">product_price (int)</div>
+                                <div class="field">total_price (int)</div>
+                            </div>
+                        </div>
+
+                        <div class="erd-table" data-aos="fade-up" data-aos-delay="500">
+                            <h3>💖 wish_list</h3>
+                            <div class="table-fields">
+                                <div class="field primary"><strong>🔑 wish_id</strong> (bigint)</div>
+                                <div class="field">product_id (bigint)</div>
+                                <div class="field foreign">📧 email (varchar) → users.email</div>
+                                <div class="field">quantity (int)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="erd-relationships">
+                    <h3>🔗 테이블 관계</h3>
+                    <div class="relationships-grid">
+                        <div class="relationship-card">
+                            <h4>User ↔ Order</h4>
+                            <p><strong>1:N 관계</strong><br>
+                            한 사용자는 여러 주문을 가질 수 있음<br>
+                            <code>users.email ← "order".email</code></p>
+                        </div>
+                        <div class="relationship-card">
+                            <h4>User ↔ WishList</h4>
+                            <p><strong>1:N 관계</strong><br>
+                            한 사용자는 여러 위시리스트를 가질 수 있음<br>
+                            <code>users.email ← wish_list.email</code></p>
+                        </div>
+                        <div class="relationship-card">
+                            <h4>Order ↔ OrderItem</h4>
+                            <p><strong>1:N 관계</strong><br>
+                            한 주문은 여러 주문아이템을 가질 수 있음<br>
+                            <code>"order".order_id ← order_item.order_id</code></p>
+                        </div>
+                        <div class="relationship-card">
+                            <h4>Product ↔ OrderItem</h4>
+                            <p><strong>1:N 관계</strong><br>
+                            한 상품은 여러 주문아이템에서 참조됨<br>
+                            <code>products.product_id ← order_item.product_id</code></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="erd-highlights">
+                    <h3>🎯 설계 포인트</h3>
+                    <div class="highlights-grid">
+                        <div class="highlight-card">
+                            <span class="highlight-icon">🔐</span>
+                            <h4>이메일 기반 연관관계</h4>
+                            <p>User 테이블의 email을 외래키로 사용하여 주문과 위시리스트 연결</p>
+                        </div>
+                        <div class="highlight-card">
+                            <span class="highlight-icon">📦</span>
+                            <h4>주문-아이템 분리</h4>
+                            <p>Order와 OrderItem을 분리하여 한 주문에 여러 상품 담기 가능</p>
+                        </div>
+                        <div class="highlight-card">
+                            <span class="highlight-icon">🛡️</span>
+                            <h4>데이터 무결성</h4>
+                            <p>Cascade 옵션과 orphanRemoval로 데이터 일관성 보장</p>
+                        </div>
+                        <div class="highlight-card">
+                            <span class="highlight-icon">⚡</span>
+                            <h4>성능 최적화</h4>
+                            <p>LAZY 로딩과 @JoinColumn으로 N+1 문제 방지</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Tech Stack -->
     <section id="tech" class="tech">
         <div class="container">
@@ -203,6 +340,18 @@
                         <div class="tech-item">
                             <span class="text-icon">JWT</span>
                             <span>JWT Auth</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="text-icon" style="background: #6DB33F; color: white;">SEC</span>
+                            <span>Spring Security</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="text-icon" style="background: #6DB33F; color: white;">JPA</span>
+                            <span>Spring Data JPA</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="text-icon" style="background: #FF6B35; color: white;">API</span>
+                            <span>REST API</span>
                         </div>
                     </div>
                 </div>
@@ -244,7 +393,7 @@
                     </div>
                 </div>
                 <div class="implementation-card" data-aos="fade-up" data-aos-delay="200">
-                    <h3>🛍️ Product & Category 구현</h3>
+                    <h3>🛍️ Product 구현</h3>
                     <h4>담당: 임정민</h4>
                     <div class="implementation-details">
                         <h5>Product 클래스 메서드</h5>
@@ -255,16 +404,19 @@
                             <li>updateProduct() - 상품 정보 수정</li>
                             <li>deleteProduct() - 상품 삭제</li>
                         </ul>
-                        <h5>Category 클래스 메서드</h5>
+                        <h5>Product 엔티티 구조</h5>
                         <ul>
-                            <li>createCategory() - 카테고리 생성</li>
-                            <li>getCategories() - 카테고리 목록</li>
-                            <li>updateCategory() - 카테고리 수정</li>
-                            <li>deleteCategory() - 카테고리 삭제</li>
+                            <li>productId (PK) - 상품 고유 ID</li>
+                            <li>productName - 상품명</li>
+                            <li>price - 가격</li>
+                            <li>description - 상품 설명</li>
+                            <li>orderCount - 주문 횟수</li>
+                            <li>productImage - 상품 이미지 URL</li>
+                            <li>stock - 재고 수량</li>
+                            <li>createdAt - 생성일시</li>
                         </ul>
-                        <h5>테이블</h5>
-                        <p><strong>products:</strong> id, name, category_id, price, description, image_url, created_at, updated_at</p>
-                        <p><strong>categories:</strong> id, name, description</p>
+                        <h5>테이블: products</h5>
+                        <p>product_id, product_name, price, description, order_count, product_image, stock, created_at</p>
                     </div>
                 </div>
                 <div class="implementation-card" data-aos="fade-up" data-aos-delay="300">
