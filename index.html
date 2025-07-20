@@ -229,7 +229,7 @@
                             <h3>💖 wish_list</h3>
                             <div class="table-fields">
                                 <div class="field primary"><strong>🔑 wish_id</strong> (bigint)</div>
-                                <div class="field">product_id (bigint)</div>
+                                <div class="field foreign">product_id (bigint) → products.product_id</div>
                                 <div class="field foreign">📧 email (varchar) → users.email</div>
                                 <div class="field">quantity (int)</div>
                             </div>
@@ -245,6 +245,12 @@
                             <p><strong>1:N 관계</strong><br>
                             한 사용자는 여러 주문을 가질 수 있음<br>
                             <code>users.email ← "order".email</code></p>
+                        </div>
+                        <div class="relationship-card">
+                            <h4>Product ↔ WishList</h4>
+                            <p><strong>1:N 관계</strong><br>
+                            한 제품은 여러 위시리스트에 담길 수 있음<br>
+                            <code>products.product_id ← wish_list.product_id</code></p>
                         </div>
                         <div class="relationship-card">
                             <h4>User ↔ WishList</h4>
