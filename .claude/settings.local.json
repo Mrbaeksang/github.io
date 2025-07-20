@@ -6,7 +6,10 @@
       "mcp__github__get_file_contents",
       "mcp__jetbrains__replace_specific_text",
       "mcp__sequential-thinking__sequentialthinking",
-      "mcp__visualization-charts__generate_mind_map"
+      "mcp__visualization-charts__generate_mind_map",
+      "mcp__exa__web_search_exa",
+      "mcp__ref-tools__ref_read_url",
+      "WebFetch(domain:github.com)"
     ],
     "deny": []
   }
